@@ -1,0 +1,17 @@
+data_source adventureworks:
+  type: postgres
+  connection:
+    host: localhost
+    username: postgres
+    password: secret
+  database: postgres
+  schema: public
+
+data_source aws_postgres_retail:
+  type: postgres
+  connection:
+    host: soda-temp-demo.cw2e4c8imun9.eu-west-1.rds.amazonaws.com
+    username: soda
+    password: 1RDS4Soda
+  database: postgres
+  schema: public
