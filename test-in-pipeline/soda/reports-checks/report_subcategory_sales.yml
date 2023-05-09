@@ -1,0 +1,10 @@
+checks for report_subcategory_sales:
+  - uncategorized_sales_percent < 0.9:
+      uncategorized_sales_percent query: >
+        select ROUND(CAST((sales_total * 100) / (select sum(sales_total) from report_subcategory_sales) AS numeric), 2) as uncategorized_sales_percent from report_subcategory_sales where category_key is NULL OR subcategory_key is NULL
+      name: Most sales are categorized
+  - sales_diff = 0:
+      name: Subcategory sales total matches
+      sales_diff query: >
+        SELECT CAST((SELECT SUM(fact_internet_sales.sales_amount) FROM fact_internet_sales)
+        - (SELECT SUM(report_subcategory_sales.sales_total) FROM report_subcategory_sales) as numeric) AS sales_diff

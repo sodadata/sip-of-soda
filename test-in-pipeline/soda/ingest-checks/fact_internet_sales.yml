@@ -1,0 +1,24 @@
+checks for fact_internet_sales:
+  - schema:
+      fail:
+        when required column missing:
+          [product_key, order_quantity, sales_amount]
+        when wrong column type:
+          product_key: integer
+          order_quantity: smallint
+          sales_amount: money
+  - missing_count(product_key) = 0:
+      name: All sales have a product associated
+  - min(order_quantity) > 0:
+      name: All sales have a non-zero order quantity
+  - failed rows:
+      name: All sales have a non-zero order amount
+      fail query: |
+        SELECT sales_order_number, sales_amount::NUMERIC
+          FROM fact_internet_sales
+        WHERE sales_amount::NUMERIC <= 0
+  - change for row_count:
+      warn: when < 5 # No new sales, is that OK?
+      fail: when > 500 # Unexpected amount of new sales, check what happened.
+      name: Sales are within expected range
+  - anomaly score for avg(sales_amount::NUMERIC) < default

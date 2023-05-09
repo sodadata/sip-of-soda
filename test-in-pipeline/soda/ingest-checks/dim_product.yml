@@ -1,0 +1,16 @@
+checks for dim_product:
+  - schema:
+      fail:
+        when required column missing: [product_key, english_product_name]
+        when wrong column type:
+          product_key: integer
+          english_product_name: varchar
+  - missing_count(product_key) = 0:
+      name: All products have a key
+  - missing_count(english_product_name) = 0:
+      name: All products have a name
+  - missing_count(product_subcategory_key):
+      name: All products have a subcategory
+      warn: when > 0 # Make this a fail once data upstream is fixed
+  - change for row_count < 10:
+      name: Products are stable

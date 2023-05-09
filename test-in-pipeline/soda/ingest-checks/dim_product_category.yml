@@ -1,0 +1,14 @@
+checks for dim_product_category:
+  - schema:
+      fail:
+        when required column missing:
+          [product_category_key, english_product_category_name]
+        when wrong column type:
+          product_category_key: integer
+          english_product_category_name: varchar
+  - missing_count(product_category_key) = 0:
+      name: All categories have a key
+  - missing_count(english_product_category_name) = 0:
+      name: All categories have a name
+  - change for row_count < 5:
+      name: Categories are stable

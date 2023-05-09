@@ -1,0 +1,9 @@
+checks for fact_product_category:
+  - missing_count(category_key):
+      name: All products have a category
+      warn: when > 0
+  - missing_count(subcategory_key):
+      name: All products have a subcategory
+      warn: when > 0
+  - missing_count(product_key) = 0:
+      name: ALl products have a key

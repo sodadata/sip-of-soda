@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fact_product_category
+    description: "Basic product categories"
+    columns:
+      - name: category
+      - name: category_name
+      - name: subcategory
+      - name: subcategory_name
+      - name: product
+      - name: product_name
+  - name: report_category_sales
+    description: "Sales by category"
+    columns:
+      - name: category_key
+      - name: category_name
+      - name: sales_count
+      - name: sales_total
+  - name: report_subcategory_sales
+    description: "Sales by subcategory"
+    columns:
+      - name: category_key
+      - name: subcategory_key
+      - name: subcategory_name
+      - name: sales_count
+      - name: sales_total

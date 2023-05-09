@@ -1,0 +1,14 @@
+checks for dim_product_subcategory:
+  - schema:
+      fail:
+        when required column missing:
+          [product_subcategory_key, english_product_subcategory_name]
+        when wrong column type:
+          product_subcategory_key: integer
+          english_product_subcategory_name: varchar
+  - missing_count(product_subcategory_key) = 0:
+      name: All subcategories have a key
+  - missing_count(english_product_subcategory_name) = 0:
+      name: All subcategories have a name
+  - change for row_count < 5:
+      name: Subcategories are stable
