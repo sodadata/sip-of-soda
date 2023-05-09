@@ -6,9 +6,10 @@ checks for dim_customer:
       name: Ensure there are no null values in the Last Name column
   - duplicate_count(phone) = 0:
       name: No duplicate phone numbers
+  - freshness(date_first_purchase) < 7d:
+      name: Data in this dataset is less than 7 days old
+  # Requires a Soda platform account
   - schema:
       warn:
         when schema changes: any
       name: Columns have not been added, removed, or changed
-  - freshness(date_first_purchase) < 7d:
-      name: Data in this dataset is less than 7 days old
