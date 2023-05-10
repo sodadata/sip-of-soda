@@ -1,3 +1,5 @@
+# Connect to AdventureWorks example data source 
+# https://go.soda.io/connect-ds
 data_source adventureworks:
   type: postgres
   connection:
@@ -6,7 +8,7 @@ data_source adventureworks:
     password: secret
   database: postgres
   schema: public
-
+# Connect to your Soda platform account 
 soda_cloud:
   host: 
   api_key_id:
