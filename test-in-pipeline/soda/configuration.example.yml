@@ -1,0 +1,17 @@
+# Example data source connection
+data_source soda_demo:
+  type: postgres
+  host: localhost
+  username: postgres
+  password: secret
+  database: postgres
+  sampler:
+    exclude_columns:
+      dim_product: ["large_photo", "*_description"]
+
+soda_cloud:
+  host: cloud.soda.io
+  api_key_id:
+  api_key_secret:
+
+
