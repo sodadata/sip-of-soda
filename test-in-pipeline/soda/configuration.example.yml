@@ -5,13 +5,15 @@ data_source soda_demo:
   username: postgres
   password: secret
   database: postgres
+  # Optional configuration to exclude columns from Soda scans
   sampler:
     exclude_columns:
       dim_product: ["large_photo", "*_description"]
 
+# Example Soda platform connection
 soda_cloud:
   host: cloud.soda.io
-  api_key_id:
-  api_key_secret:
+  api_key_id: f9d77945***
+  api_key_secret: lk2t783-k***
 
 
