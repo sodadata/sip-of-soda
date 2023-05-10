@@ -1,4 +1,5 @@
 # Run a Soda scan to execute these checks for data quality on AdventureWorks data
+# https://go.soda.io/checks
 checks for dim_customer:
   - invalid_count(email_address) = 0:
       valid format: email
