@@ -1,3 +1,4 @@
+# Run a Soda scan to test the quality of AdventureWorks data
 checks for dim_customer:
   - invalid_count(email_address) = 0:
       valid format: email
