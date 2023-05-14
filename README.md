@@ -10,11 +10,16 @@ Refer to the full instructions in the [Take a sip of Soda](https://docs.soda.io/
 
 To enable you to take a first sip of Soda, you can use Docker to quickly build an example PostgreSQL data source against which you can run scans for data quality. The example data source contains data for AdventureWorks, an imaginary online e-commerce organization.
 
-1. Clone this repo locally. Use Terminal to navigate to the newly-cloned repo in your local environment.
-2. If it is not already running in your local environment, start Docker.
-3. In Terminal, run the following command to set up the prepared example data source.
-`docker-compose up`
-4. When the output reads `data system is ready to accept connections`, your data source is set up and you are ready to proceed with the [tutorial](https://docs.soda.io/soda/quick-start-sip.html).
+With Docker running, run the following command in Terminal to set up the prepared example data source.
+```shell
+docker run \
+ --name sip-of-soda \
+ -p 5432:5432 \
+ -e POSTGRES_PASSWORD=secret \
+ sodadata/soda-adventureworks
+```
+
+When the output reads `data system is ready to accept connections`, your data source is set up and you are ready to proceed with the [tutorial](https://docs.soda.io/soda/quick-start-sip.html).
 
 
 ## What is Soda?
